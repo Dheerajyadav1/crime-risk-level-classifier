@@ -19,3 +19,12 @@ This API predicts the level of crime risk based on:
   "age": 25,
   "gender": 1
 }
+
+
+## Gender Values
+```json
+{
+  "0": "Male",
+  "1": "Female",
+  "2": "Other"
+}
