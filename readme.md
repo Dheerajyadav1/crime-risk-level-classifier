@@ -19,7 +19,7 @@ This API predicts the level of crime risk based on:
   "age": 25,
   "gender": 1
 }
-
+```
 
 ## Gender Values
 ```json
@@ -28,3 +28,11 @@ This API predicts the level of crime risk based on:
   "1": "Female",
   "2": "Other"
 }
+```
+
+## Valid Cities are
+'Ahmedabad', 'Chennai', 'Ludhiana', 'Pune', 'Delhi', 'Mumbai',
+       'Surat', 'Visakhapatnam', 'Bangalore', 'Kolkata', 'Ghaziabad',
+       'Hyderabad', 'Jaipur', 'Lucknow', 'Bhopal', 'Patna', 'Kanpur',
+       'Varanasi', 'Nagpur', 'Meerut', 'Thane', 'Indore', 'Rajkot',
+       'Vasai', 'Agra', 'Kalyan', 'Nashik', 'Srinagar', 'Faridabad'
