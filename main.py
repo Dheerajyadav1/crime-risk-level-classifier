@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 # Load saved model and encoder
 city_encoder = joblib.load("models/city_encoder.pkl")
@@ -30,7 +31,7 @@ def predict_risk(data: CrimeInput):
         encoded_city = city_encoder.transform([data.city])[0]
 
         # Get current time
-        now = datetime.now()
+        now = datetime.now(ZoneInfo("Asia/Kolkata"))
         current_hour = now.hour
         current_month = now.month
 
