@@ -4,6 +4,13 @@ import joblib
 import pandas as pd
 from datetime import datetime
 from zoneinfo import ZoneInfo
+from enum import Enum
+
+class GenderEnum(int, Enum):
+    Male = 0
+    Female = 1
+    Other = 2
+
 
 # Load saved model and encoder
 city_encoder = joblib.load("models/city_encoder.pkl")
@@ -15,7 +22,7 @@ app = FastAPI(title="Crime Risk Predictor")
 class CrimeInput(BaseModel):
     city: str
     age: int
-    gender: int  # Assuming 0 for Male, 1 for Female
+    gender: GenderEnum  # Assuming 0 for Male, 1 for Female
 
 @app.get("/")
 def home():
@@ -27,6 +34,9 @@ def predict_risk(data: CrimeInput):
         # Encode city
         if data.city not in city_encoder.classes_:
             return {"error": f"Unknown city: {data.city}"}
+
+        if not (0 <= data.age <= 100):
+            return {"error": f"Invalid Age: {data.age}"}
 
         encoded_city = city_encoder.transform([data.city])[0]
 
